@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Léopold Boxberger - Rédacteur Web & Stratégie de Contenu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2E86AB;
+            --secondary: #A23B72;
+            --dark: #1F2937;
+            --light: #F9FAFB;
+            --accent: #F18F01;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--light);
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            transition: all 0.3s;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Sections */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        /* À propos */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .competences-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .competence-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .competence-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .competence-item ul {
+            list-style: none;
+            font-size: 0.85rem;
+        }
+
+        .competence-item li:before {
+            content: "✓ ";
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-tag {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+
+        /* CV Section */
+        .cv-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .cv-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .cv-sidebar h3,
+        .cv-main h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item {
+            margin-bottom: 2rem;
+        }
+
+        .experience-item h4 {
+            color: var(--secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-date {
+            color: #666;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .experience-item ul {
+            margin-top: 0.5rem;
+            margin-left: 1.5rem;
+        }
+
+        /* Contact */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cv-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .competences-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Lettre de motivation */
+        .lettre-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .lettre-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .lettre-signature {
+            text-align: right;
+            margin-top: 2rem;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#apropos">À propos</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#cv">CV</a></li>
+            <li><a href="#lettre">Lettre de motivation</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header id="accueil" class="fade-in">
+        <h1>Léopold Boxberger</h1>
+        <p>Rédacteur Web & Stratégie de Contenu | Master MAESTRIA</p>
+        <div class="header-buttons">
+            <a href="#contact" class="btn btn-primary">Me contacter</a>
+            <a href="#cv" class="btn btn-secondary">Voir mon CV</a>
+        </div>
+    </header>
+
+    <!-- À propos -->
+    <section id="apropos">
+        <h2>À propos de moi</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Passionné par l'écriture et l'innovation</h3>
+                <p>
+                    Étudiant en Master MAESTRIA (Métiers de l'édition et de l'audiovisuel : stratégies éditoriales, 
+                    transmission des savoirs, recherche et innovation appliquée) à l'Université Lumière Lyon 2, 
+                    je suis à la recherche d'une alternance en rédaction web.
+                </p>
+                <p>
+                    Mon parcours combine une solide formation en lettres et édition avec une maîtrise des outils 
+                    d'intelligence artificielle générative, me permettant d'allier créativité littéraire et 
+                    innovation technologique. Passionné par l'automatisation et les processus éditoriaux, je 
+                    développe des solutions techniques pour optimiser la production de contenu.
+                </p>
+            </div>
+            <div class="competences-grid">
+                <div class="competence-item">
+                    <h4>🖊️ Rédaction</h4>
+                    <ul>
+                        <li>Articles de blog</li>
+                        <li>Contenu SEO</li>
+                        <li>Fiches produits</li>
+                        <li>Newsletters</li>
+                    </ul>
+                </div>
+                <div class="competence-item">
+                    <h4>🤖 IA & Tech</h4>
+                    <ul>
+                        <li>IA générative</li>
+                        <li>Python (scripts)</li>
+                        <li>InDesign</li>
+                        <li>Automatisation</li>
+                    </ul>
+                </div>
+                <div class="competence-item">
+                    <h4>📚 Édition</h4>
+                    <ul>
+                        <li>Analyse éditoriale</li>
+                        <li>Comité de lecture</li>
+                        <li>Chaîne du livre</li>
+                        <li>PAO</li>
+                    </ul>
+                </div>
+                <div class="competence-item">
+                    <h4>🌐 Langues</h4>
+                    <ul>
+                        <li>Français (natif)</li>
+                        <li>Anglais (B2)</li>
+                        <li>Espagnol (B1)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio">
+        <h2>Mon Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-content">
+                    <h3>🌹 Projet Book Edge Art</h3>
+                    <p>
+                        Développement d'un système automatisé en Python pour générer des patrons de découpe 
+                        permettant de réaliser des livres sculptés avec un motif de rose visible sur la tranche. 
+                        Ce projet combine programmation, géométrie précise et art du livre.
+                    </p>
+                    <h4 style="margin-top: 1rem; color: var(--secondary); font-size: 0.9rem;">Technologies utilisées :</h4>
+                    <ul style="margin-left: 1.5rem; font-size: 0.9rem;">
+                        <li>Python 3 pour l'automatisation</li>
+                        <li>ReportLab pour la génération de PDF avec contrôle précis</li>
+                        <li>PyPDF2 pour la manipulation de PDF existants</li>
+                    </ul>
+                    <h4 style="margin-top: 1rem; color: var(--secondary); font-size: 0.9rem;">Résultats :</h4>
+                    <ul style="margin-left: 1.5rem; font-size: 0.9rem;">
+                        <li>Génération automatique de 199 pages avec patron de découpe</li>
+                        <li>Précision au dixième de millimètre</li>
+                        <li>Application du patron sur n'importe quel PDF existant</li>
+                        <li>870 mesures gérées automatiquement</li>
+                    </ul>
+                    <span class="portfolio-tag">Python</span>
+                    <span class="portfolio-tag">ReportLab</span>
+                    <span class="portfolio-tag">PyPDF2</span>
+                    <span class="portfolio-tag">Automatisation</span>
+                    <span class="portfolio-tag">Art du livre</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV -->
+    <section id="cv">
+        <h2>Mon Curriculum Vitae</h2>
+        <div class="cv-section">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h3>Léopold Boxberger</h3>
+                <p>📧 leopoldboxberger@gmail.com | 📱 07 68 92 40 03</p>
+                <p>📍 128 avenue Thiers, 69006 Lyon</p>
+            </div>
+
+            <div class="cv-grid">
+                <div class="cv-sidebar">
+                    <h3>Formation</h3>
+                    <div class="experience-item">
+                        <h4>Master MAESTRIA</h4>
+                        <p class="experience-date">2024-2026</p>
+                        <p>Université Lumière Lyon 2</p>
+                        <p><em>Métiers de l'édition et de l'audiovisuel : stratégies éditoriales, transmission des savoirs, recherche et innovation appliquée</em></p>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <h4>Licence de Lettres</h4>
+                        <p class="experience-date">2021-2024</p>
+                        <p>Université Lumière Lyon 2</p>
+                    </div>
+
+                    <h3 style="margin-top: 2rem;">Compétences techniques</h3>
+                    <ul style="list-style: none;">
+                        <li>✓ Rédaction web & SEO</li>
+                        <li>✓ IA générative (ChatGPT, Claude)</li>
+                        <li>✓ Suite Adobe (InDesign, Photoshop)</li>
+                        <li>✓ Python (scripts)</li>
+                        <li>✓ Suite Office</li>
+                        <li>✓ WordPress</li>
+                    </ul>
+                </div>
+
+                <div class="cv-main">
+                    <h3>Expériences professionnelles</h3>
+                    
+                    <div class="experience-item">
+                        <h4>Membre du comité de lecture</h4>
+                        <p class="experience-date">Depuis septembre 2024 | La Giberne, Lyon</p>
+                        <ul>
+                            <li>Analyse critique de manuscrits et rédaction de rapports éditoriaux</li>
+                            <li>Participation à la création et au développement de collections</li>
+                            <li>Présentation du catalogue aux libraires lyonnais</li>
+                            <li>Veille éditoriale et étude de la concurrence</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <h4>Vendeur-conseil en librairie</h4>
+                        <p class="experience-date">Juillet-Août 2024 | Librairie Expérience, Collonges-Lès-Bevy</p>
+                        <ul>
+                            <li>Conseil personnalisé aux clients</li>
+                            <li>Gestion des stocks et mise en rayon</li>
+                            <li>Animation de l'espace librairie</li>
+                        </ul>
+                    </div>
+
+                    <h3 style="margin-top: 2rem;">Projets personnels</h3>
+                    
+                    <div class="experience-item">
+                        <h4>Développement d'outils d'automatisation éditoriale</h4>
+                        <p class="experience-date">2024</p>
+                        <ul>
+                            <li>Création de scripts Python pour l'art du livre</li>
+                            <li>Automatisation de workflows InDesign (ExtendScript)</li>
+                            <li>Gain de productivité significatif dans les tâches répétitives</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lettre de motivation -->
+    <section id="lettre">
+        <h2>Lettre de motivation</h2>
+        <div class="lettre-content">
+            <p><strong>Objet : Candidature pour une alternance en rédaction web</strong></p>
+            
+            <p>Madame, Monsieur,</p>
+            
+            <p>
+                Actuellement en première année de Master MAESTRIA (Métiers de l'édition et de l'audiovisuel : 
+                stratégies éditoriales, transmission des savoirs, recherche et innovation appliquée) à l'Université 
+                Lumière Lyon 2, je suis à la recherche d'une alternance en rédaction web pour une durée de deux ans, 
+                à raison de trois jours en entreprise et deux jours à l'université.
+            </p>
+            
+            <p>
+                Passionné par l'écriture et l'univers de l'édition, mon parcours m'a permis de développer une 
+                double compétence : d'une part, une solide formation en lettres et en analyse éditoriale, et d'autre 
+                part, une maîtrise des outils numériques et de l'intelligence artificielle générative. Cette combinaison 
+                me permet d'allier créativité littéraire et innovation technologique, deux atouts essentiels pour 
+                produire des contenus web de qualité, optimisés et engageants.
+            </p>
+            
+            <p>
+                En tant que membre du comité de lecture de la maison d'édition "La Giberne" depuis septembre 2024, 
+                j'analyse des manuscrits, rédige des rapports éditoriaux et participe à la stratégie de développement 
+                de collections. Cette expérience m'a appris à structurer mes idées, à adopter différentes tonalités 
+                rédactionnelles et à comprendre les attentes d'un public ciblé. Par ailleurs, mes projets personnels 
+                d'automatisation de workflows éditoriaux (développement de scripts Python et ExtendScript pour InDesign) 
+                témoignent de ma capacité à optimiser les processus et à m'adapter rapidement aux nouveaux outils.
+            </p>
+            
+            <p>
+                Mon Master MAESTRIA, axé sur la recherche et l'innovation appliquée aux métiers de l'édition, 
+                m'enseigne notamment l'utilisation stratégique de l'IA générative dans la production de contenu. 
+                Ces compétences me permettent non seulement de rédiger efficacement, mais aussi d'intégrer des 
+                pratiques innovantes pour améliorer la visibilité et l'impact des contenus en ligne.
+            </p>
+            
+            <p>
+                Rigoureux, curieux et doté d'un excellent sens de l'organisation, je suis convaincu que mon profil 
+                polyvalent et ma motivation sauront répondre à vos attentes. Je serais ravi de mettre mes compétences 
+                au service de votre entreprise et de contribuer à votre stratégie de contenu.
+            </p>
+            
+            <p>
+                Je me tiens à votre disposition pour un entretien afin d'échanger plus en détail sur ma candidature 
+                et sur la manière dont je pourrais m'intégrer à votre équipe.
+            </p>
+            
+            <p>Dans l'attente de votre retour, je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.</p>
+            
+            <p class="lettre-signature">Léopold Boxberger</p>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2>Me contacter</h2>
+        <div class="contact-form">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Nom complet *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Sujet</label>
+                    <input type="text" id="subject" name="subject">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Envoyer</button>
+            </form>
+            
+            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #ddd;">
+                <p><strong>Coordonnées directes :</strong></p>
+                <p>📧 leopoldboxberger@gmail.com</p>
+                <p>📱 07 68 92 40 03</p>
+                <p>📍 Lyon, France</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Léopold Boxberger - Tous droits réservés</p>
+        <p>Rédacteur Web & Stratégie de Contenu | Master MAESTRIA</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Créer le lien mailto
+            const mailtoLink = `mailto:leopoldboxberger@gmail.com?subject=${encodeURIComponent(formData.subject || 'Contact depuis le portfolio')}&body=${encodeURIComponent('De: ' + formData.name + '\nEmail: ' + formData.email + '\n\nMessage:\n' + formData.message)}`;
+            
+            window.location.href = mailtoLink;
+            
+            // Réinitialiser le formulaire
+            this.reset();
+        });
+
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.8s ease-out';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
