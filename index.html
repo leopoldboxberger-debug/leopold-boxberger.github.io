@@ -226,41 +226,63 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .cv-grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+       /* CV Section */
+.cv-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.cv-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.cv-sidebar h3,
+.cv-main h3 {
+    color: var(--primary);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+.experience-item {
+    margin-bottom: 2rem;
+}
+.experience-item h4 {
+    color: var(--secondary);
+    margin-bottom: 0.3rem;
+}
+.experience-date {
+    color: #666;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+.experience-item ul {
+    margin-top: 0.5rem;
+    margin-left: 1.5rem;
+}
 
-        .cv-sidebar h3,
-        .cv-main h3 {
-            color: var(--primary);
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-        }
+/* Ajouts pour les listes et le responsive */
+.cv-sidebar ul,
+.cv-main ul {
+    list-style: none;
+    padding-left: 1.2rem;
+}
+.cv-sidebar li:before,
+.cv-main li:before {
+    content: "✓ ";
+    color: var(--accent);
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
 
-        .experience-item {
-            margin-bottom: 2rem;
-        }
-
-        .experience-item h4 {
-            color: var(--secondary);
-            margin-bottom: 0.3rem;
-        }
-
-        .experience-date {
-            color: #666;
-            font-size: 0.9rem;
-            font-style: italic;
-        }
-
-        .experience-item ul {
-            margin-top: 0.5rem;
-            margin-left: 1.5rem;
-        }
-
+/* Responsive : une seule colonne sur mobile */
+@media (max-width: 768px) {
+    .cv-grid {
+        grid-template-columns: 1fr;
+    }
+}
         /* Contact */
         .contact-form {
             max-width: 600px;
